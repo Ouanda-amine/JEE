@@ -1,5 +1,6 @@
 package org.example.demo2;
 
+import DAO.EmployeeDAO;
 import bean.Employee;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -13,8 +14,15 @@ import java.io.IOException;
 
 public class CreatEmloyee extends HttpServlet {
 
+    private EmployeeDAO employeeDAO;
+
+    @Override
+    public void init() {
+        employeeDAO = new EmployeeDAO();
+    }
+
     protected void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/CreatEmloyee.jsp").forward(request, response);
+        request.getRequestDispatcher("index.jsp").forward(request, response);
 
     }
     protected void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -25,6 +33,9 @@ public class CreatEmloyee extends HttpServlet {
         String salaire = request.getParameter("salaire");
 
         Employee employee = new Employee(name,prenom,email,poste,salaire);
+        employeeDAO.CreateEmployee(employee);
+        response.sendRedirect("lireEmployee");
+
 
 
 

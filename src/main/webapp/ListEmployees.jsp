@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Person List</title>
+    <title>Employees  List</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -38,7 +38,7 @@
             <td><%= employee.getSalaire() %></td>
             <td>
                 <a href="modifierEmployee?id=<%= employee.getId() %>" class="btn btn-warning btn-sm">Edit</a>
-                <form action="deletePerson" method="post" style="display:inline;">
+                <form action="deleteEmployee" method="post" style="display:inline;">
                     <input type="hidden" name="id" value="<%= employee.getId() %>" />
                     <input type="submit" value="Delete" class="btn btn-danger btn-sm" />
                 </form>
@@ -51,7 +51,7 @@
         </tbody>
     </table>
 
-    <a href="createPerson" class="btn btn-success">Create New Person</a>
+    <a href="createmployee" class="btn btn-success">Add new Employee</a>
 </div>
 
 

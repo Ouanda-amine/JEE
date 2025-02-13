@@ -12,9 +12,9 @@ public class EmployeeDAO {
 
     public EmployeeDAO() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            con= DriverManager.getConnection("jdbc:mysql://localhost:3306/Employees ","root","amine1230");
-
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con= DriverManager.getConnection("jdbc:mysql://localhost:3306/Employees ","root","");
+            System.out.println("Connected to database");
 
         } catch (Exception e) {
            e.printStackTrace();
@@ -22,7 +22,7 @@ public class EmployeeDAO {
     }
 
     public void CreateEmployee(Employee emp) {
-        String sql="INSERT INTO employes(nom,prenom,email,post,salaire) VALUES(?,?,?,?)";
+        String sql="INSERT INTO employes(nom,prenom,email,post,salaire) VALUES(?,?,?,?,?)";
         try (PreparedStatement prestat = con.prepareStatement(sql)){
             prestat.setString(1,emp.getName());
             prestat.setString(2,emp.getPrenom());
@@ -56,6 +56,29 @@ public class EmployeeDAO {
        }
        return employeeslist;
 
+    }
+    public Employee getEmployeeById(int id) {
+        Employee employee = null;
+        String sql="SELECT * FROM employes WHERE id=?";
+        try(PreparedStatement prest = con.prepareStatement(sql)) {
+            prest.setInt(1, id);
+            try (ResultSet res = prest.executeQuery(sql);){
+                if (res.next()) {
+                    employee = new Employee();
+                    employee.setId(res.getInt("id"));
+                    employee.setName(res.getString("nom"));
+                    employee.setPrenom(res.getString("prenom"));
+                    employee.setEmail(res.getString("email"));
+                    employee.setPoste(res.getString("post"));
+                    employee.setSalaire(res.getString("salaire"));
+                }
+
+            }
+
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return employee;
     }
 
 

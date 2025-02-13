@@ -12,33 +12,33 @@
     <h2 class="text-center mb-4">Update Employee</h2>
 
     <form action="updatePerson" method="post">
-        <input type="hidden" name="id" value="${person.id}" />
+        <input type="hidden" name="id" value="${employee.id}" />
 
         <div class="form-group">
 
-            <input type="text" class="form-control" name="name" value="${person.name}" required />
+            <input type="text" class="form-control" name="name" value="${employee.name}" required />
         </div>
 
         <div class="form-group">
 
-            <input type="number" class="form-control" name="age" value="${person.age}" required />
+            <input type="number" class="form-control" name="age" value="${employee.age}" required />
         </div>
 
         <div class="form-group">
 
-            <input type="text" class="form-control" name="address" value="${person.address}" required />
+            <input type="text" class="form-control" name="address" value="${employee.address}" required />
         </div>
 
         <div class="form-group">
 
-            <input type="text" class="form-control" name="tel" value="${person.tel}" required />
+            <input type="text" class="form-control" name="tel" value="${employee.tel}" required />
         </div>
 
         <button type="submit" class="btn btn-primary btn-block">Update</button>
     </form>
 
     <br>
-    <a href="personList" class="btn btn-secondary">Back to Person List</a>
+    <a href="" class="btn btn-secondary">Back to Person List</a>
 </div>
 
 </body>

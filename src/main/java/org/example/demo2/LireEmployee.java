@@ -24,9 +24,9 @@ public class LireEmployee extends HttpServlet {
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Employee> emp = employeeDAO
+       List<Employee> emp = employeeDAO.getallEmployees();
         request.setAttribute("employeelist",emp);
-        request.getRequestDispatcher("ListEmployee.jsp").forward(request, response);
+        request.getRequestDispatcher("ListEmployees.jsp").forward(request, response);
 
     }
     @Override
