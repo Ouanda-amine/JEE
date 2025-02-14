@@ -1,4 +1,4 @@
-package bean;
+package org.example.demo2.bean;
 
 public class Employee {
     private int id;

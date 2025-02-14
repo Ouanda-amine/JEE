@@ -14,10 +14,7 @@
 <body>
 <div class="container mt-5">
     <h1 class="text-center mb-4">Employee Form</h1>
-    <div class="text-center mb-3">
-        <a href="addEmployee.jsp" class="btn btn-secondary">Add Employee</a>
-        <a href="showEmployee.jsp" class="btn btn-secondary">Show Employee</a>
-    </div>
+
     <form action="createmployee" method="post">
         <div class="form-group mb-3">
             <label for="nom" class="form-label">Nom</label>

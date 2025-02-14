@@ -1,7 +1,7 @@
-package DAO;
+package org.example.demo2.DAO;
 
 
-import bean.Employee;
+import org.example.demo2.bean.Employee;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -59,10 +59,10 @@ public class EmployeeDAO {
     }
     public Employee getEmployeeById(int id) {
         Employee employee = null;
-        String sql="SELECT * FROM employes WHERE id=?";
+        String sql="SELECT * FROM employes WHERE id = ?";
         try(PreparedStatement prest = con.prepareStatement(sql)) {
             prest.setInt(1, id);
-            try (ResultSet res = prest.executeQuery(sql);){
+            try (ResultSet res = prest.executeQuery()){
                 if (res.next()) {
                     employee = new Employee();
                     employee.setId(res.getInt("id"));
@@ -76,9 +76,34 @@ public class EmployeeDAO {
             }
 
         }catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Employee not found");
         }
         return employee;
+    }
+
+    public void modifierEmployee(Employee employee) {
+        String query = "UPDATE employes SET nom = ?, prenom = ?, email = ?, post = ? , salaire = ? WHERE id = ?";
+        try (PreparedStatement stmt = con.prepareStatement(query)) {
+            stmt.setString(1, employee.getName());
+            stmt.setString(2, employee.getPrenom());
+            stmt.setString(3, employee.getEmail());
+            stmt.setString(4, employee.getPoste());
+            stmt.setString(5, employee.getSalaire());
+            stmt.setInt(6, employee.getId());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public  void deleteEmployee(int id) {
+        String sql = "DELETE FROM employes WHERE id = ?";
+        try (PreparedStatement pres = con.prepareStatement(sql)){
+            pres.setInt(1,id);
+            pres.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("Employee not founddd");
+        }
     }
 
 

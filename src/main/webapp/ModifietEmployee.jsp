@@ -1,5 +1,11 @@
 
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="org.example.demo2.bean.Employee" %>
+<%@ page import="java.util.List" %>
+
+
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -11,34 +17,43 @@
 <div class="container mt-5">
     <h2 class="text-center mb-4">Update Employee</h2>
 
-    <form action="updatePerson" method="post">
-        <input type="hidden" name="id" value="${employee.id}" />
+    <%
+      Employee employee = (Employee) request.getAttribute("employee");
+    %>
+
+    <form action="modifieremployee" method="post">
+        <input type="hidden" name="id" value="<%= employee.getId() %>"/>
 
         <div class="form-group">
 
-            <input type="text" class="form-control" name="name" value="${employee.name}" required />
+            <input type="text" class="form-control" name="name" value="<%=employee.getName() %>" required />
         </div>
 
         <div class="form-group">
 
-            <input type="number" class="form-control" name="age" value="${employee.age}" required />
+            <input type="text" class="form-control" name="prenom" value="<%=employee.getPrenom() %>" required />
         </div>
 
         <div class="form-group">
 
-            <input type="text" class="form-control" name="address" value="${employee.address}" required />
+            <input type="text" class="form-control" name="email" value="<%=employee.getEmail() %>" required />
         </div>
 
         <div class="form-group">
 
-            <input type="text" class="form-control" name="tel" value="${employee.tel}" required />
+            <input type="text" class="form-control" name="post" value="<%=employee.getPoste() %>" required />
+        </div>
+
+        <div class="form-group">
+
+            <input type="text" class="form-control" name="salaire" value="<%=employee.getSalaire() %>" required />
         </div>
 
         <button type="submit" class="btn btn-primary btn-block">Update</button>
     </form>
 
     <br>
-    <a href="" class="btn btn-secondary">Back to Person List</a>
+    <a href="lireEmployee" class="btn btn-secondary"> <- list </a>
 </div>
 
 </body>

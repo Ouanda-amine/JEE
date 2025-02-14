@@ -1,4 +1,4 @@
-<%@ page import="bean.Employee" %>
+<%@ page import="org.example.demo2.bean.Employee" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -37,7 +37,7 @@
             <td><%= employee.getPoste() %></td>
             <td><%= employee.getSalaire() %></td>
             <td>
-                <a href="modifierEmployee?id=<%= employee.getId() %>" class="btn btn-warning btn-sm">Edit</a>
+                <a href="modifieremployee?id=<%= employee.getId() %>" class="btn btn-warning btn-sm">Edit</a>
                 <form action="deleteEmployee" method="post" style="display:inline;">
                     <input type="hidden" name="id" value="<%= employee.getId() %>" />
                     <input type="submit" value="Delete" class="btn btn-danger btn-sm" />

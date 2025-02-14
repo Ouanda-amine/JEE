@@ -1,7 +1,7 @@
-package org.example.demo2;
+package org.example.demo2.servlets;
 
-import DAO.EmployeeDAO;
-import bean.Employee;
+import org.example.demo2.DAO.EmployeeDAO;
+import org.example.demo2.bean.Employee;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
